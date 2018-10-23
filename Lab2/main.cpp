@@ -4,6 +4,7 @@
 
 #include "CubicInterpolation.hpp"
 #include "LagrangeInterpolation.hpp"
+#include "LinearRegressor.hpp"
 
 #include "Enumerator.hpp"
 
@@ -50,11 +51,11 @@ int main(void)
                     4.0f,
                     7.0f,
                     8.0f,
+                    10.0f,
                     11.0f,
-                    14.0f,
-                    18.0f,
-                    22.0f,
-                    28.0f
+                    12.0f,
+                    23.0f,
+                    23.0f
             };
 
 
@@ -67,6 +68,18 @@ int main(void)
     std::pair<float, float> linearReg = Enumerator::linearRegression(x, y);
     std::cout << Enumerator::rmse(x, y) << std::endl;
     std::cout << linearReg.first << " " << linearReg.second << std::endl;
+
+    LinearRegressor linearRegressor;
+    linearRegressor.fit(x, y);
+
+    std::pair<float, float> coeffs = linearRegressor.getCoefficients();
+    std::cout << coeffs.first << " " << coeffs.second << std::endl;
+
+    std::vector<float> predictedValues = linearRegressor.predict(x);
+    for(float value : predictedValues)
+    {
+        std::cout << value << std::endl;
+    }
 
     return 0;
 }

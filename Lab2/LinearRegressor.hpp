@@ -13,9 +13,12 @@ private:
     std::pair<float, float> coefficients;
 
 public:
-    LinearRegressor();
-    void fit(std::vector<float> x, std::vector<float> y);
-    std::vector<float> predict(std::vector<float> x);
+    LinearRegressor() = default;
+
+    void fit(const std::vector<float>& x, const std::vector<float>& y);
+    std::vector<float> predict(const std::vector<float>& x);
+
+    std::pair<float, float> getCoefficients();
 
 };
 

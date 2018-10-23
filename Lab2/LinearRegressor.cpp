@@ -4,10 +4,7 @@
 
 #include "LinearRegressor.hpp"
 
-LinearRegressor::LinearRegressor()
-{}
-
-void LinearRegressor::fit(std::vector<float> x, std::vector<float> y)
+void LinearRegressor::fit(const std::vector<float>& x, const std::vector<float>& y)
 {
     int noPointsX = x.size();
     int noPointsY = y.size();
@@ -40,7 +37,7 @@ void LinearRegressor::fit(std::vector<float> x, std::vector<float> y)
     coefficients.second = b;
 }
 
-std::vector<float> LinearRegressor::predict(std::vector<float> x)
+std::vector<float> LinearRegressor::predict(const std::vector<float>& x)
 {
     int noPoints = x.size();
     std::vector<float> result;
@@ -51,4 +48,10 @@ std::vector<float> LinearRegressor::predict(std::vector<float> x)
 
     return result;
 }
+
+std::pair<float, float> LinearRegressor::getCoefficients()
+{
+    return coefficients;
+};
+
 

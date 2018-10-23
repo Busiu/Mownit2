@@ -56,7 +56,6 @@ std::pair<float,float> Enumerator::linearRegression(std::vector<float> x, std::v
     b = ((sumY - a * sumX) / (noPoints));
 
     return std::make_pair(a, b);
-
 }
 
 
