@@ -9,6 +9,19 @@
 #include <iostream>
 #include <cmath>
 
+template <typename T> class AGHMatrix;
+
+template <typename T> struct LUMatrixes
+{
+    AGHMatrix<T> L;
+    AGHMatrix<T> U;
+};
+template <typename T> struct CholeskyMatrixes
+{
+    AGHMatrix<T> L;
+    AGHMatrix<T> LTrans;
+};
+
 template <typename T> class AGHMatrix
 {
 private:
@@ -33,21 +46,29 @@ public:
     T& operator()(const unsigned& row, const unsigned& col);
     const T& operator()(const unsigned& row, const unsigned& col) const;
 
-    // Printing matrix
-    friend std::ostream& operator<<(std::ostream& ostream, const AGHMatrix<T>& matrix);
-
     bool isSymmetric() const;
 
     void transpose();
 
     // Factorization
-    void LUFactorization();
+    LUMatrixes<T> LUFactorization() const;
+    CholeskyMatrixes<T> choleskyFactorization() const;
+
+    // Gauss elimination
+    AGHMatrix<T> gaussElimination();
 
     // Access the row and column sizes
     unsigned getRows() const;
     unsigned getCols() const;
     long long getDeterminant() const;
-};
 
+private:
+    //  Cholesky
+    void choleskyEqualIndexes(AGHMatrix<T>& L, int& i) const;
+    void choleskyInequalIndexes(AGHMatrix<T>& L, int& i, int& j) const;
+
+    //  Switch rows
+    void switchRows(int& first, int& second);
+};
 
 #endif //MOWNIT2_AGHMATRIX_HPP
