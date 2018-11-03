@@ -114,6 +114,6 @@ int main()
         std::cout << realDataResults[i] << "," << std::endl;
     }
     std::cout << std::endl;
-    
+
     return 0;
 }
