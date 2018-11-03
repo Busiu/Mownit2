@@ -55,3 +55,17 @@ std::valarray<std::complex<double>> FFT::getResults()
 {
     return results;
 }
+
+std::valarray<double> FFT::getSpectrum()
+{
+    std::valarray<double> spectrum;
+    spectrum.resize(results.size());
+
+    for(int i = 0; i < spectrum.size(); i++)
+    {
+        spectrum[i] = abs(results[i]);
+    }
+
+    return spectrum;
+}
+

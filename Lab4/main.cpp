@@ -7,6 +7,7 @@
 
 #include "DFT.hpp"
 #include "FFT.hpp"
+#include "RealDataSets.hpp"
 
 double getTimeInterval(struct timespec& timeStart, struct timespec& timeEnd)
 {
@@ -56,7 +57,7 @@ int main()
     std::cout << std::endl;
 
     // Zadanie 3 -------------------------------------------------------------------------------------------------------
-
+    /*
     std::vector<std::vector<double>> datas;
     datas.resize(10);
 
@@ -96,6 +97,23 @@ int main()
         timeInterval = getTimeInterval(timeStart, timeEnd);
         std::cout << timeInterval << " ms" << std::endl;
     }
+    std::cout << std::endl;
+    */
+    // Zadanie 4 -------------------------------------------------------------------------------------------------------
 
+    extern std::vector<double> realData;
+
+    FFT realFFT;
+    realFFT.init(realData);
+    realFFT.calculate();
+    std::valarray<double> realDataResults = realFFT.getSpectrum();
+
+    std::cout << "Real Data after FFT: " << std::endl;
+    for(int i = 0; i < realDataResults.size(); i++)
+    {
+        std::cout << realDataResults[i] << "," << std::endl;
+    }
+    std::cout << std::endl;
+    
     return 0;
 }

@@ -6,6 +6,7 @@
 #define MOWNIT2_FFT_HPP
 
 #include <complex>
+#include <cmath>
 #include <iostream>
 #include <valarray>
 #include <vector>
@@ -24,6 +25,7 @@ public:
     void init(std::vector<double>& specimen);
     void calculate();
     std::valarray<std::complex<double>> getResults();
+    std::valarray<double> getSpectrum();
 
 private:
     void initResultValues();
