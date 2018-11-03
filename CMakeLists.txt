@@ -8,8 +8,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED YES)
 find_package(GSL REQUIRED)
 include_directories(${GSL_INCLUDE_DIR})
 
-add_executable(Mownit2      Lab4/Complex.cpp
-                            Lab4/DFT.cpp
+add_executable(Mownit2      Lab4/DFT.cpp
+                            Lab4/FFT.cpp
                             Lab4/main.cpp)
 
 target_link_libraries(Mownit2 ${GSL_LIBRARIES})

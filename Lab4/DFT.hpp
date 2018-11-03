@@ -5,16 +5,15 @@
 #ifndef MOWNIT2_DFT_HPP
 #define MOWNIT2_DFT_HPP
 
+#include <complex>
 #include <iostream>
 #include <vector>
-
-#include "Complex.hpp"
 
 class DFT
 {
 private:
     std::vector<double> specimen;
-    std::vector<Complex<double>> results;
+    std::vector<std::complex<double>> results;
     unsigned noSamples;
 
 public:
@@ -23,7 +22,7 @@ public:
 
     void init(std::vector<double>& specimen);
     void calculate();
-    std::vector<Complex<double>> getResults();
+    std::vector<std::complex<double>> getResults();
 
 };
 

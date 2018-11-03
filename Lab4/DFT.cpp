@@ -15,34 +15,18 @@ void DFT::calculate()
 {
     for(int k = 0; k < noSamples; k++)
     {
-        std::cout << "LOL k" << std::endl;
-        Complex<double> sum(0, 0);
+        std::complex<double> sum(0, 0);
         for(int n = 0; n < noSamples; n++)
         {
-            std::cout << "LOL n" << std::endl;
-            sum += (sum * specimen[n]);
+            sum += (std::polar(1.0, (-2 * M_PI * k * n) / noSamples) * specimen[n]);
         }
-        std::cout << "LOL end" << std::endl;
         results[k] = sum;
-        std::cout << "LOL error" << std::endl;
     }
 }
 
-std::vector<Complex<double>> DFT::getResults()
+std::vector<std::complex<double>> DFT::getResults()
 {
-
-    //TODO: Rzucenie wyjątku
-    if(results.empty())
-    {
-        std::cout << "Results was not calculted!" << std::endl;
-
-        std::vector<Complex<double>> empty;
-        return empty;
-    }
-    else
-    {
-        return results;
-    }
+    return results;
 }
 
 
