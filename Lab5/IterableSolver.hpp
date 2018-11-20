@@ -21,6 +21,10 @@ public:
     AGHMatrix<double> gaussSeidelMethod(AGHMatrix<double>& A, AGHMatrix<double>& B, int K);
     AGHMatrix<double> SORMethod(AGHMatrix<double>& A, AGHMatrix<double>& B, double relaxation, int K);
 
+    void printJacobiIterations(AGHMatrix<double>& A, AGHMatrix<double>& B, int K);
+    void printGaussSeidelIterations(AGHMatrix<double>& A, AGHMatrix<double>& B, int K);
+    void printSORIterations(AGHMatrix<double>& A, AGHMatrix<double>& B, double relaxation, int K);
+
 };
 
 

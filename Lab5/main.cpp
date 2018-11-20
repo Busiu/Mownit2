@@ -107,11 +107,11 @@ int main(void)
 
     //  Zadanie 3 ------------------------------------------------------------------------------------------------------
 
-    AGHMatrix<double> SORSolution1 = solver.SORMethod(matrixA1, matrixB1, 0.5, 25);
-    AGHMatrix<double> SORSolution2 = solver.SORMethod(matrixA2, matrixB2, 0.5, 25);
-    AGHMatrix<double> SORSolution3 = solver.SORMethod(matrixA3, matrixB3, 0.5, 25);
-    AGHMatrix<double> SORSolution4 = solver.SORMethod(matrixA4, matrixB4, 0.5, 25);
-    AGHMatrix<double> SORSolution5 = solver.SORMethod(matrixA5, matrixB5, 0.5, 25);
+    AGHMatrix<double> SORSolution1 = solver.SORMethod(matrixA1, matrixB1, 1.2, 25);
+    AGHMatrix<double> SORSolution2 = solver.SORMethod(matrixA2, matrixB2, 1.2, 25);
+    AGHMatrix<double> SORSolution3 = solver.SORMethod(matrixA3, matrixB3, 1.2, 25);
+    AGHMatrix<double> SORSolution4 = solver.SORMethod(matrixA4, matrixB4, 1.2, 25);
+    AGHMatrix<double> SORSolution5 = solver.SORMethod(matrixA5, matrixB5, 1.2, 25);
 
     std::cout << "Metoda SOR-a:" << std::endl;
     std::cout << SORSolution1;
@@ -119,5 +119,31 @@ int main(void)
     std::cout << SORSolution3;
     std::cout << SORSolution4;
     std::cout << SORSolution5;
+
+    //  Zadanie 5 ------------------------------------------------------------------------------------------------------
+
+    std::cout << "Iteracje Jacobiego:" << std::endl;
+    solver.printJacobiIterations(matrixA1, matrixB1, 25);
+    solver.printJacobiIterations(matrixA2, matrixB2, 25);
+    solver.printJacobiIterations(matrixA3, matrixB3, 25);
+    solver.printJacobiIterations(matrixA4, matrixB4, 25);
+    solver.printJacobiIterations(matrixA5, matrixB5, 25);
+    std::cout << "------------------------" << std::endl;
+
+    std::cout << "Iteracje Gaussa-Seidela:" << std::endl;
+    solver.printGaussSeidelIterations(matrixA1, matrixB1, 25);
+    solver.printGaussSeidelIterations(matrixA2, matrixB2, 25);
+    solver.printGaussSeidelIterations(matrixA3, matrixB3, 25);
+    solver.printGaussSeidelIterations(matrixA4, matrixB4, 25);
+    solver.printGaussSeidelIterations(matrixA5, matrixB5, 25);
+    std::cout << "------------------------" << std::endl;
+
+    std::cout << "Iteracje SOR-a:" << std::endl;
+    solver.printSORIterations(matrixA1, matrixB1, 1.2, 25);
+    solver.printSORIterations(matrixA2, matrixB2, 1.2, 25);
+    solver.printSORIterations(matrixA3, matrixB3, 1.2, 25);
+    solver.printSORIterations(matrixA4, matrixB4, 1.2, 25);
+    solver.printSORIterations(matrixA5, matrixB5, 1.2, 25);
+    std::cout << "------------------------" << std::endl;
 
 }
