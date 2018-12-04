@@ -2,8 +2,6 @@
 // Created by Busiu on 02.12.2018.
 //
 
-#include <chrono>
-#include <thread>
 #include "NumericIntegrator.hpp"
 
 double NumericIntegrator::rectangleMethod(double a, double b, int noRange, std::function <double(double)> f)
@@ -47,29 +45,39 @@ double NumericIntegrator::simpsonMethod(double a, double b, int noRange, std::fu
     return area;
 }
 
+double NumericIntegrator::monteCarloMethod(double a, double b, int noSamples, std::function <double(double)> f)
+{
+    double totalArea = 0;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dis(a, b);
+    for(int i = 0; i < noSamples; i++)
+    {
+        double x0 = dis(gen);
+        double tmpArea = f(x0) * (b - a);
+        totalArea += tmpArea;
+    }
+
+    return totalArea / noSamples;
+}
+
 double NumericIntegrator::monteCarloPI(int noSamples)
 {
     int innerSamples = 0;
+    double radius = 1.0;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dis(0.0, radius);
     for(int i = 0; i < noSamples; i++)
     {
-        std::default_random_engine generator(static_cast<unsigned> (time(nullptr) * clock()));
-        std::uniform_real_distribution<double> distributionOfX{-50, 50};
-        std::uniform_real_distribution<double> distributionOfY{-50, 50};
-        double x = distributionOfX(generator);
-        double y = distributionOfY(generator);
-        if(x*x + y*y > 2500)
-        {
-            continue;
-        }
-        else
+
+        double x = dis(gen);
+        double y = dis(gen);
+        if(sqrt(x*x + y*y) <= radius)
         {
             innerSamples++;
         }
-
-        std::chrono::duration<int, std::micro> timespan(1000);
-        std::this_thread::sleep_for(timespan);
     }
 
     return 4.0 * innerSamples / noSamples;
 }
-

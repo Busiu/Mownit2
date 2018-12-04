@@ -20,8 +20,10 @@ public:
     double rectangleMethod(double a, double b, int noRange, std::function <double(double)> f);
     double trapeziumMethod(double a, double b, int noRange, std::function <double(double)> f);
     double simpsonMethod(double a, double b, int noRange, std::function <double(double)> f);
+    double monteCarloMethod(double a, double b, int noSamples, std::function <double(double)> f);
 
     double monteCarloPI(int noSamples);
+
 };
 
 

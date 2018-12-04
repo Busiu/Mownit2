@@ -107,12 +107,42 @@ int main(void)
         std::cout << "\t\t" << integrator.simpsonMethod(0, 10, 3*i, sinusoidal) << std::endl;
     }
 
-    //  Zadanie 2   ----------------------------------------------------------------------------------------------------
+    //  Zadanie 3   ----------------------------------------------------------------------------------------------------
 
     std::cout << "Wyliczanie liczby PI za pomoca metody Monte Carlo: " << std::endl;
     for(int i = 1; i <= 100; i++)
     {
         std::cout << "\t" << integrator.monteCarloPI(100 * i) << "," << std::endl;
+    }
+
+    //  Zadanie 4   ----------------------------------------------------------------------------------------------------
+
+    std::cout << "Wyliczanie pol pod wykresami poprzednich funkcji za pomoca metody Monte Carlo: " << std::endl;
+
+    std::cout << "\tFunkcja Liniowa:" << std::endl;
+    for(int i = 1; i <= 10; i++)
+    {
+        std::cout << "\t\t" << integrator.monteCarloMethod(0, 10, 100 * i, linear) << std::endl;
+    }
+    std::cout << "\tFunkcja Kwadratowa:" << std::endl;
+    for(int i = 1; i <= 10; i++)
+    {
+        std::cout << "\t\t" << integrator.monteCarloMethod(0, 10, 100 * i, quadratic) << std::endl;
+    }
+    std::cout << "\tFunkcja Szescienna:" << std::endl;
+    for(int i = 1; i <= 10; i++)
+    {
+        std::cout << "\t\t" << integrator.monteCarloMethod(0, 10, 100 * i, cubic) << std::endl;
+    }
+    std::cout << "\tFunkcja Eksponencjalna:" << std::endl;
+    for(int i = 1; i <= 10; i++)
+    {
+        std::cout << "\t\t" << integrator.monteCarloMethod(0, 10, 100 * i, exponential) << std::endl;
+    }
+    std::cout << "\tFunkcja Sinusoidalna:" << std::endl;
+    for(int i = 1; i <= 10; i++)
+    {
+        std::cout << "\t\t" << integrator.monteCarloMethod(0, 10, 100 * i, sinusoidal) << std::endl;
     }
 
 }
